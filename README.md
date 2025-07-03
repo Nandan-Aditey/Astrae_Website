@@ -1,2 +1,2 @@
-# Quarks
-Blog by Undergraduate Students at IISc
+# Astrae Website
+Created by Databased
