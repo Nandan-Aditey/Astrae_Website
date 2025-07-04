@@ -13,10 +13,11 @@ title: Pictures
             {% if post.categories contains "pictures" %}
                 <!-- Individual picture -->
                 <div class="picture-inner-rectangle">
-                    <img src="{{ post.image }}" 
-                         alt="{{ post.title }}" 
-                         class="pictures-image"
-                         onclick="openModal('{{ post.image }}', '{{ post.title | escape }}', '{{ post.description | escape }}')">
+                    <img src="{{ post.image | relative_url }}"
+                        alt="{{ post.title }}"
+                        class="pictures-image"
+                        onclick="openModal('{{ post.image | relative_url }}', '{{ post.title | escape }}', '{{ post.description | escape }}')">
+
                     <!-- <p class="pictures-name"><strong>{{ post.title }}</strong></p> -->
                     <!-- <p class="pictures-author"><strong>{{ post.author }}</strong></p> -->
                 </div>
