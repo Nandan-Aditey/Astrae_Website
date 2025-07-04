@@ -14,10 +14,10 @@ title: Pictures
                 <!-- Individual picture -->
                 <div class="picture-inner-rectangle">
                     <img src="{{ post.image | relative_url }}"
-                        alt="{{ post.title }}"
-                        class="pictures-image"
-                        onclick="openModal('{{ post.image | relative_url }}', '{{ post.title | escape }}', '{{ post.description | escape }}')">
-
+                         alt="{{ post.title }}"
+                         class="pictures-image"
+                         onclick="openModal('{{ post.image | relative_url }}', '{{ post.title | escape }}', '{{ post.description | escape }}')">
+                    <!-- Optional: Uncomment to show title or author -->
                     <!-- <p class="pictures-name"><strong>{{ post.title }}</strong></p> -->
                     <!-- <p class="pictures-author"><strong>{{ post.author }}</strong></p> -->
                 </div>
@@ -42,34 +42,37 @@ title: Pictures
     <div id="modalCaption"></div>
 </div>
 
-
 <!-- CSS (only for this page) -->
 <style>
 .pictures-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
     gap: 20px;
-    justify-content: flex-start;
+    justify-content: center;
+    padding: 20px;
 }
 
 .picture-inner-rectangle {
-    width: 250px;
-    padding: 10px;
+    display: inline-block;
+    padding: 8px;
+    background-color: #fafafa;
     border: 1px solid #ddd;
     border-radius: 6px;
-    background-color: #fafafa;
-    text-align: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 100%;
 }
 
 .pictures-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
     border: 2px solid #ccc;
     border-radius: 4px;
-    width: 100%;
-    height: auto;
     cursor: pointer;
     transition: transform 0.2s;
 }
+
 .pictures-image:hover {
     transform: scale(1.03);
 }
@@ -81,7 +84,6 @@ title: Pictures
     font-size: 14px;
 }
 
-/* Modal styles */
 .modal {
     display: none;
     position: fixed;
@@ -122,7 +124,7 @@ title: Pictures
 }
 </style>
 
-<!-- Javascriptt -->
+<!-- Javascript -->
 <script>
 function openModal(imageSrc, title, description) {
     const modal = document.getElementById("photoModal");
