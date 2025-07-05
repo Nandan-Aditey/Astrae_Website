@@ -1,0 +1,142 @@
+---
+layout: default
+title: News
+---
+
+<section class="recent-posts">
+    <div class="section-title">
+        <h2><span>News</span></h2>
+    </div>
+
+    <div class="pictures-container">
+        {% for post in site.posts %}
+            {% if post.categories contains "pictures" %}
+                <!-- Individual picture -->
+                <div class="picture-inner-rectangle">
+                    <img src="{{ post.image | relative_url }}"
+                         alt="{{ post.title }}"
+                         class="pictures-image"
+                         onclick="openModal('{{ post.image | relative_url }}', '{{ post.title | escape }}', '{{ post.description | escape }}')">
+                    <!-- Optional: Uncomment to show title or author -->
+                    <!-- <p class="pictures-name"><strong>{{ post.title }}</strong></p> -->
+                    <!-- <p class="pictures-author"><strong>{{ post.author }}</strong></p> -->
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Pagination -->
+<div class="bottompagination">
+    <div class="pointerup">
+        <i class="fa fa-caret-up"></i>
+    </div>
+    <span class="navigation" role="navigation">
+        {% include pagination.html %}
+    </span>
+</div>
+
+<div id="photoModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <div id="modalCaption"></div>
+</div>
+
+<!-- CSS (only for this page) -->
+<style>
+.pictures-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.picture-inner-rectangle {
+    display: inline-block;
+    padding: 8px;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 100%;
+}
+
+.pictures-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.pictures-image:hover {
+    transform: scale(1.03);
+}
+
+.pictures-name,
+.pictures-author {
+    margin: 5px 0;
+    color: #444;
+    font-size: 14px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 6px;
+}
+
+#modalCaption {
+    margin: 15px auto;
+    text-align: center;
+    color: #ccc;
+    font-size: 18px;
+    max-width: 90%;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+</style>
+
+<!-- Javascript -->
+<script>
+function openModal(imageSrc, title, description) {
+    const modal = document.getElementById("photoModal");
+    const modalImg = document.getElementById("modalImg");
+    const caption = document.getElementById("modalCaption");
+
+    modal.style.display = "block";
+    modalImg.src = imageSrc;
+    caption.innerHTML = `<strong>${title}</strong><br>${description}`;
+}
+
+function closeModal() {
+    document.getElementById("photoModal").style.display = "none";
+}
+</script>
