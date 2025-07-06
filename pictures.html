@@ -54,6 +54,7 @@ title: Pictures
 /* Image Card */
 .picture-inner-rectangle {
     display: inline-block;
+    position: relative;
     background-color: #fff;
     border: 3px solid #ccc; /* Constant border width */
     border-radius: 8px;
@@ -62,12 +63,19 @@ title: Pictures
     width: 100%;
     margin-bottom: 20px;
     cursor: pointer;
+
+    /* Make the height depend on the width of the container and the aspect ratio of the image */
+    height: 0;
+    padding-top: 56.25%; /* Aspect ratio of 16:9 (height/width * 100 = 9/16 * 100 = 56.25%) */
 }
 
 .pictures-image {
-    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto; /* Maintain aspect ratio */
+    height: 100%;
+    object-fit: cover; /* Ensures the image maintains aspect ratio while covering the container */
     border-radius: 0;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
