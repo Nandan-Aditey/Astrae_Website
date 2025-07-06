@@ -77,6 +77,39 @@ title: Pictures
     transform: scale(1.03);
 }
 
+.pictures-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+    padding: 20px;
+}
+
+.picture-inner-rectangle {
+    padding: 0.5em;
+    background-color: #fafafa;
+    border: 0.1em solid #ddd;
+    border-radius: 0.5em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.pictures-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 0.15em solid #ccc;
+    border-radius: 0.4em;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.pictures-image:hover {
+    transform: scale(1.03);
+}
+
+
 .pictures-name,
 .pictures-author {
     margin: 5px 0;
