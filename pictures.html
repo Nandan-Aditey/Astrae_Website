@@ -21,7 +21,6 @@ title: Pictures
     </div>
 </section>
 
-
 <!-- Pagination -->
 <div class="bottompagination">
     <div class="pointerup">
@@ -43,8 +42,8 @@ title: Pictures
 <style>
 .pictures-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));  /* Create columns that auto-fill the space */
-    gap: 20px;  /* Space between the images */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Auto-fill columns */
+    gap: 20px;  /* Spacing between items */
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
@@ -56,13 +55,14 @@ title: Pictures
     align-items: center;
     justify-content: center;
     background-color: #fff;
-    border: 1px solid #ddd;
+    border: 2px solid #ccc;  /* Subtle border around the images */
     border-radius: 8px;
     padding: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     position: relative;
     height: auto;
+    transition: transform 0.3s ease-in-out; /* Hover effect */
 }
 
 .pictures-image {
@@ -73,7 +73,6 @@ title: Pictures
     cursor: pointer;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     object-fit: cover;
-    border: 2px solid #ccc;
 }
 
 .pictures-image:hover {
@@ -81,29 +80,16 @@ title: Pictures
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-.pictures-name,
-.pictures-author {
-    margin-top: 10px;
-    font-size: 14px;
-    text-align: center;
-    color: #444;
-}
-
-.pictures-name strong,
-.pictures-author strong {
-    color: #333;
-}
-
 /* Responsive styling */
 @media (max-width: 500px) {
     .pictures-container {
-        grid-template-columns: 1fr;  /* Stacks the images on smaller screens */
+        grid-template-columns: 1fr;  /* Stacks the images */
         gap: 10px;
     }
 
     .pictures-image {
         max-height: 200px;
-        object-fit: contain;  /* Adjust to prevent the image from stretching */
+        object-fit: contain;  /* Prevent stretching */
     }
 }
 
@@ -121,11 +107,11 @@ title: Pictures
 }
 
 .modal-content {
-    max-width: 80%;
+    max-width: 90%;
     margin: auto;
     display: block;
     border-radius: 6px;
-    object-fit: contain;
+    object-fit: contain;  /* Maintain image aspect ratio */
 }
 
 #modalCaption {
