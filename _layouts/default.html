@@ -174,8 +174,9 @@ ga('send', 'pageview');
                 <a target="_blank" class="nav-link" href="https://github.com/wowthemesnet/mediumish-theme-jekyll"><i class="fab fa-github"></i> Fork on Github</a>
                 </li>
             -->
-
+                {% if page.url == "/blog" %}
                 {% include search-lunr.html %}
+                {% endif %}
 
             </ul>
 
