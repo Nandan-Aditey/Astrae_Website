@@ -42,6 +42,10 @@ pre {
     background: rgba(255, 255, 255, .97);
     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .15);
     transition: top 0.2s ease-in-out;
+
+    /* Astrae-Updates */
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
 }
 
 .main-content {
@@ -319,7 +323,7 @@ span.post-read-more a:hover {
 }
 
 .mediumnavigation .navbar-brand img {
-    max-height: 30px;
+    max-height: 80px;
     margin-right: 5px;
 }
 
@@ -1596,3 +1600,22 @@ img:hover+.post-tag {
     display: block;
 }
 
+
+/* Astrae Updates */
+
+.mediumnavigation {
+    background: rgba(255, 255, 255, .97);
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .15);
+    transition: top 0.2s ease-in-out;
+
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+}
+.navbar-brand img {
+    height: 50px;
+    width: auto;
+}
+.nav-link {
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+}
