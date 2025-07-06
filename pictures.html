@@ -104,14 +104,18 @@ title: Pictures
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
     padding-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
     max-width: 90%;
+    max-height: 80%;
     margin: auto;
     display: block;
     border-radius: 6px;
-    object-fit: contain;  /* Maintain image aspect ratio */
+    object-fit: contain; /* Ensures the image keeps its aspect ratio */
 }
 
 #modalCaption {
@@ -140,7 +144,7 @@ function openModal(imageSrc, title, description) {
     const modalImg = document.getElementById("modalImg");
     const caption = document.getElementById("modalCaption");
 
-    modal.style.display = "block";
+    modal.style.display = "flex";  // Use flex for centering the modal content
     modalImg.src = imageSrc;
     caption.innerHTML = `<strong>${title}</strong><br>${description}`;
 }
