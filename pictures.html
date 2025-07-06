@@ -42,42 +42,38 @@ title: Pictures
 
 <!-- CSS -->
 <style>
+/* Collage Masonry Container */
 .pictures-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Auto-fill columns with minimum width */
-    gap: 20px;  /* Space between items */
+    column-count: 3;
+    column-gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
+/* Image Card */
 .picture-inner-rectangle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: inline-block;
     background-color: #fff;
-    border: 2px solid #ccc;  /* Subtle border around the images */
+    border: 3px solid #ccc; /* Constant border width */
     border-radius: 8px;
-    padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    position: relative;
-    height: 300px;  /* Fixed height */
+    width: 100%;
+    margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .pictures-image {
     display: block;
     width: 100%;
-    height: auto;
-    border-radius: 6px;
-    cursor: pointer;
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 0;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    object-fit: cover;
 }
 
 .pictures-image:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -139,7 +135,17 @@ title: Pictures
 }
 
 /* Responsive Styles */
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
+    .pictures-container {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .pictures-container {
+        column-count: 1;
+    }
+
     .modal-content-container {
         flex-direction: column;
         max-width: 95%;
@@ -155,7 +161,6 @@ title: Pictures
         width: 100%;
     }
 }
-
 </style>
 
 <!-- Javascript -->
@@ -165,7 +170,7 @@ function openModal(imageSrc, title, description) {
     const modalImg = document.getElementById("modalImg");
     const caption = document.getElementById("modalCaption");
 
-    modal.style.display = "flex";  // Open modal with flex display
+    modal.style.display = "flex";
     modalImg.src = imageSrc;
     caption.innerHTML = `<strong>${title}</strong><br>${description}`;
 }
