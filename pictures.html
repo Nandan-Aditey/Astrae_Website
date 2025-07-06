@@ -12,9 +12,7 @@ title: Pictures
         {% for post in site.posts %}
             {% if post.categories contains "pictures" %}
                 <div class="picture-inner-rectangle" onclick="openModal('{{ post.image | relative_url }}', '{{ post.title | escape }}', '{{ post.description | escape }}')">
-                    <img src="{{ post.image | relative_url }}"
-                         alt="{{ post.title }}"
-                         class="pictures-image">
+                    <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="pictures-image">
                 </div>
             {% endif %}
         {% endfor %}
@@ -44,7 +42,8 @@ title: Pictures
 <style>
 /* Collage Masonry Container */
 .pictures-container {
-    column-count: 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* Dividing into 3 equal columns */
     column-gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -60,26 +59,22 @@ title: Pictures
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    width: 100%;
+    width: 100%; /* Width of the container (equal width for all images) */
     margin-bottom: 20px;
     cursor: pointer;
-
-    /* Make the height depend on the width of the container and the aspect ratio of the image */
-    height: 0;
-    padding-top: 56.25%; /* Aspect ratio of 16:9 (height/width * 100 = 9/16 * 100 = 56.25%) */
 }
 
+/* The image inside the container */
 .pictures-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image maintains aspect ratio while covering the container */
+    width: 100%; /* Image width equals the container width */
+    height: auto; /* Height will be adjusted based on aspect ratio */
+    display: block;
+    object-fit: cover; /* Maintains the aspect ratio and fills the container */
     border-radius: 0;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
+/* Hover effect on the image */
 .pictures-image:hover {
     transform: scale(1.02);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
@@ -145,13 +140,13 @@ title: Pictures
 /* Responsive Styles */
 @media (max-width: 1000px) {
     .pictures-container {
-        column-count: 2;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
     }
 }
 
 @media (max-width: 600px) {
     .pictures-container {
-        column-count: 1;
+        grid-template-columns: 1fr; /* 1 column on extra-small screens */
     }
 
     .modal-content-container {
@@ -173,6 +168,7 @@ title: Pictures
 
 <!-- Javascript -->
 <script>
+// Function to open the modal
 function openModal(imageSrc, title, description) {
     const modal = document.getElementById("photoModal");
     const modalImg = document.getElementById("modalImg");
@@ -183,7 +179,34 @@ function openModal(imageSrc, title, description) {
     caption.innerHTML = `<strong>${title}</strong><br>${description}`;
 }
 
+// Function to close the modal
 function closeModal() {
     document.getElementById("photoModal").style.display = "none";
 }
+
+// Dynamic height adjustment based on image aspect ratio
+document.addEventListener("DOMContentLoaded", function() {
+    const pictures = document.querySelectorAll('.picture-inner-rectangle');
+
+    pictures.forEach(picture => {
+        const img = picture.querySelector('img');
+        
+        // Wait for the image to load to get its natural dimensions
+        img.onload = function() {
+            const aspectRatio = img.naturalHeight / img.naturalWidth; // y/x
+            const alpha = picture.offsetWidth; // Width of the picture container
+
+            // Calculate the height based on aspect ratio
+            const height = alpha * aspectRatio;
+
+            // Set the height of the picture-inner-rectangle
+            picture.style.height = `${height + 6}px`; // +6 for the border width (top + bottom)
+        };
+
+        // Trigger image loading event if it's already loaded
+        if (img.complete) {
+            img.onload();
+        }
+    });
+});
 </script>
