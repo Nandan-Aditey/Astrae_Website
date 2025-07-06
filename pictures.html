@@ -42,34 +42,34 @@ title: Pictures
 
 <!-- CSS -->
 <style>
-/* Collage Masonry Container */
+/* Grid-based container: 3 equal-width columns */
 .pictures-container {
-    column-count: 3;
-    column-gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns of equal width */
+    gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* Image Card */
+/* Image wrapper with constant border, height adapts to image */
 .picture-inner-rectangle {
-    display: inline-block;
     background-color: #fff;
-    border: 3px solid #ccc; /* Constant border width */
+    border: 3px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    width: 100%;
-    margin-bottom: 20px;
-    cursor: pointer;
+    width: 100%; /* fill grid cell */
 }
 
+/* Let the image determine height naturally */
 .pictures-image {
     display: block;
-    width: 100%;
-    height: auto; /* Maintain aspect ratio */
+    width: 100%; /* fit the box's width */
+    height: auto; /* keep natural aspect ratio */
     border-radius: 0;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .pictures-image:hover {
@@ -134,16 +134,16 @@ title: Pictures
     cursor: pointer;
 }
 
-/* Responsive Styles */
+/* Responsive grid */
 @media (max-width: 1000px) {
     .pictures-container {
-        column-count: 2;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 600px) {
     .pictures-container {
-        column-count: 1;
+        grid-template-columns: 1fr;
     }
 
     .modal-content-container {
