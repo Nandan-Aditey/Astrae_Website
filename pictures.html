@@ -51,7 +51,6 @@ title: Pictures
 
 /* Image Card */
 .picture-inner-rectangle {
-    /* Remove display property completely */
     background-color: #fff;
     border: 3px solid #ccc;
     border-radius: 8px;
@@ -59,8 +58,14 @@ title: Pictures
     overflow: hidden;
     cursor: pointer;
     margin-bottom: 20px;
-    break-inside: avoid;
+    break-inside: avoid;  /* <- REQUIRED to prevent column breaks */
+    display: block;        /* <- Remove inline-block completely */
 }
+.picture-inner-rectangle {
+    height: auto !important;
+    min-height: 0 !important;
+}
+
 
 
 /* The image inside the container */
