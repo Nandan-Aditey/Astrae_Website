@@ -41,24 +41,32 @@ title: Pictures
 
 <!-- Masonry CSS -->
 <style>
-  .pictures-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+.pictures-container {
+  max-width: 1200px;
+  margin: 0 auto;       /* centers the container itself */
+  padding: 20px;
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* centers children horizontally */
+  gap: 20px;  /* spacing between items */
+}
 
-  .picture-inner-rectangle {
-    background-color: #fff;
-    border: 3px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    cursor: pointer;
-    margin-bottom: 20px;
-    width: calc(25% - 15px);
-    float: left;
-    margin-right: 20px;
-  }
+.picture-inner-rectangle {
+  background-color: #fff;
+  border: 3px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: 20px;
+  
+  width: calc(25% - 15px); /* keep same size */
+  /* Remove float */
+  /* float: left;  REMOVE THIS */
+  display: block;
+}
+
 
   .picture-inner-rectangle:nth-child(4n) {
     margin-right: 0;
@@ -134,35 +142,35 @@ title: Pictures
     cursor: pointer;
   }
 
-  /* Responsive */
-  @media (max-width: 1000px) {
+/* Responsive */
+    @media (max-width: 1000px) {
     .picture-inner-rectangle {
-      width: calc(50% - 10px);
-      margin-right: 20px;
+        width: calc(50% - 10px);
+        /* Remove margin-right */
+        margin-right: 0;
     }
-    .picture-inner-rectangle:nth-child(2n) {
-      margin-right: 0;
+    /* Remove nth-child rule since no margin-right */
     }
-  }
 
-  @media (max-width: 600px) {
+    @media (max-width: 600px) {
     .picture-inner-rectangle {
-      width: 100%;
-      margin-right: 0;
+        width: 100%;
+        margin-right: 0;
     }
     .modal-content-container {
-      flex-direction: column;
-      max-width: 95%;
+        flex-direction: column;
+        max-width: 95%;
     }
     .modal-image {
-      width: 100%;
-      margin-right: 0;
-      margin-bottom: 20px;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
     }
     .modal-description {
-      width: 100%;
+        width: 100%;
     }
-  }
+}
+
 </style>
 
 <!-- Scripts -->
