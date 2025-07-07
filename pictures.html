@@ -13,7 +13,7 @@ title: Pictures
     <div class="pictures-container" id="masonry-gallery">
       {% for post in site.posts %}
         {% if post.categories contains "pictures" %}
-          <div class="picture-inner-rectangle" onclick="openModal('{{ post.image | relative_url }}', '{{ post.title | escape }}', '{{ post.description | escape }}')">
+          onclick="openModal('{{ post.image | relative_url }}', '{{ post.title | escape }}', '{{ post.description | escape }}', '{{ post.author | escape }}')"
             <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="pictures-image" />
           </div>
         {% endif %}
@@ -193,15 +193,18 @@ title: Pictures
     });
   });
 
-  function openModal(imageSrc, title, description) {
-    const modal = document.getElementById("photoModal");
-    const modalImg = document.getElementById("modalImg");
-    const caption = document.getElementById("modalCaption");
+    function openModal(imageSrc, title, description, author) {
+        const modal = document.getElementById("photoModal");
+        const modalImg = document.getElementById("modalImg");
+        const caption = document.getElementById("modalCaption");
 
-    modal.style.display = "flex";
-    modalImg.src = imageSrc;
-    caption.innerHTML = `<strong>${title}</strong><br>${description}`;
-  }
+        modal.style.display = "flex";
+        modalImg.src = imageSrc;
+
+        let authorLine = author ? `<em>Photo by ${author}</em><br>` : "";
+        caption.innerHTML = `<strong>${title}</strong><br>${authorLine}${description}`;
+    }
+
 
   function closeModal() {
     document.getElementById("photoModal").style.display = "none";
