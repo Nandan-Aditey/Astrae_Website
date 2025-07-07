@@ -105,12 +105,18 @@ title: Home
 <!-- PHOTO ARCHIVE -->
 <section class="photo-archive mt-5">
   <div class="section-title">
-    <h2><a href="Astrae_Website/pictures.html"><span>Photo Archive</span></a></h2>
+    <h2><a href="Astrae_Website/pictures"><span>Photo Archive</span></a></h2>
   </div>
-  <div class="row">
-    <div class="col-4"><img src="https://picsum.photos/300/200?random=4" class="img-fluid" alt="Photo 1"></div>
-    <div class="col-4"><img src="https://picsum.photos/300/450?random=5" class="img-fluid" alt="Photo 2"></div>
-    <div class="col-4"><img src="https://picsum.photos/300/150?random=6" class="img-fluid" alt="Photo 3"></div>
+
+  <div class="pictures-wrapper" style="text-align: center;">
+    <div class="pictures-container" id="masonry-preview">
+      {% assign pictures = site.posts | where: "categories", "pictures" | slice: 0, 6 %}
+      {% for post in pictures %}
+        <div class="picture-inner-rectangle" onclick="openModal('{{ post.image | relative_url }}', '{{ post.title | escape }}', '{{ post.description | escape }}', '{{ post.author | escape }}')">
+          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="pictures-image" />
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </section>
 
