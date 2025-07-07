@@ -44,21 +44,18 @@ title: Pictures
 
 <!-- Masonry CSS -->
 <style>
-/* Wrapper centers the masonry container */
 .pictures-wrapper {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
-/* Masonry container needs to be inline-block for centering */
 .pictures-container {
   max-width: 1200px;
   padding: 20px;
-
-  display: inline-block;  /* allow centering by wrapper */
-  text-align: left;       /* reset text alignment inside */
-  /* Removed flex and justify-content */
-  /* Removed gap */
+  width: 100%; /* ensures responsiveness */
 }
+
 
 .picture-inner-rectangle {
   background-color: #fff;
