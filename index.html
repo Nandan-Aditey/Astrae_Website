@@ -6,42 +6,60 @@ title: Home
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
-  .event-collage {
-    position: relative;
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+    .event-collage {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      height: 380px;
+      margin: 0 auto;
+    }
 
-  .event-collage .img1 {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    margin-bottom: 15px;
-  }
+    .event-collage img {
+      position: absolute;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 
-  .event-collage .img2 {
-    width: 48%;
-    float: left;
-    border-radius: 8px;
-    object-fit: cover;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
+    .event-collage .img1 {
+      width: 100%;
+      height: 160px;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
 
-  .event-collage .img3 {
-    width: 48%;
-    float: right;
-    margin-top: -30px;
-    border-radius: 8px;
-    object-fit: cover;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-</style>
+    .event-collage .img2 {
+      width: 60%;
+      height: 200px;
+      top: 160px;
+      left: 0;
+      z-index: 2;
+    }
 
+    .event-collage .img3 {
+      width: 45%;
+      height: 120px;
+      top: 120px;
+      right: 0;
+      z-index: 3;
+    }
+
+    @media (max-width: 768px) {
+      .event-collage {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .event-collage img {
+        position: static;
+        width: 100% !important;
+        height: auto !important;
+      }
+    }
+  </style>
 </head>
 
 {% if page.url == "/" %}
@@ -63,14 +81,13 @@ title: Home
     </div>
     <div class="col-md-6">
       <div class="event-collage">
-        <img src="https://picsum.photos/300/200?random=1" alt="Event photo 1">
-        <img src="https://picsum.photos/300/450?random=2" alt="Event photo 2" class="tall">
-        <img src="https://picsum.photos/300/150?random=3" alt="Event photo 3">
+        <img src="https://picsum.photos/600/200?random=1" alt="Event photo 1" class="img1">
+        <img src="https://picsum.photos/300/300?random=2" alt="Event photo 2" class="img2">
+        <img src="https://picsum.photos/250/150?random=3" alt="Event photo 3" class="img3">
       </div>
     </div>
   </div>
 </section>
-
 
 <!-- BLOG SECTION -->
 <section class="blog-section mt-5">
@@ -91,20 +108,10 @@ title: Home
     <h2><a href="/photoarchive"><span>Photo Archive</span></a></h2>
   </div>
   <div class="row">
-    <div class="col-4"><img src="https://picsum.photos/300/200?random=1" class="img-fluid" alt="Photo 1"></div>
-    <div class="col-4"><img src="https://picsum.photos/300/450?random=2" class="img-fluid" alt="Photo 2"></div>
-    <div class="col-4"><img src="https://picsum.photos/300/150?random=3" class="img-fluid" alt="Photo 3"></div>
+    <div class="col-4"><img src="https://picsum.photos/300/200?random=4" class="img-fluid" alt="Photo 1"></div>
+    <div class="col-4"><img src="https://picsum.photos/300/450?random=5" class="img-fluid" alt="Photo 2"></div>
+    <div class="col-4"><img src="https://picsum.photos/300/150?random=6" class="img-fluid" alt="Photo 3"></div>
   </div>
 </section>
 
 {% endif %}
-
-
-<!-- Pagination
-<div class="bottompagination">
-    <div class="pointerup"><i class="fa fa-caret-up"></i></div>
-    <span class="navigation" role="navigation">
-        {% include pagination.html %}
-    </span>
-</div>
--->
