@@ -51,16 +51,17 @@ title: Pictures
 
 /* Image Card */
 .picture-inner-rectangle {
-    /* display: inline-block; */
-    width: 100%;
-    margin-bottom: 20px;
+    /* Remove display property completely */
     background-color: #fff;
     border: 3px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     cursor: pointer;
+    margin-bottom: 20px;
+    break-inside: avoid;
 }
+
 
 /* The image inside the container */
 .pictures-image {
