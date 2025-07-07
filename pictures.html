@@ -8,17 +8,20 @@ title: Pictures
     <h2><span>Pictures</span></h2>
   </div>
 
-  <!-- Masonry Container -->
-  <div class="pictures-container" id="masonry-gallery">
-    {% for post in site.posts %}
-      {% if post.categories contains "pictures" %}
-        <div class="picture-inner-rectangle" onclick="openModal('{{ post.image | relative_url }}', '{{ post.title | escape }}', '{{ post.description | escape }}')">
-          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="pictures-image">
-        </div>
-      {% endif %}
-    {% endfor %}
+  <!-- Centering wrapper -->
+  <div class="pictures-wrapper" style="text-align: center;">
+    <div class="pictures-container" id="masonry-gallery">
+      {% for post in site.posts %}
+        {% if post.categories contains "pictures" %}
+          <div class="picture-inner-rectangle" onclick="openModal('{{ post.image | relative_url }}', '{{ post.title | escape }}', '{{ post.description | escape }}')">
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="pictures-image" />
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
 </section>
+
 
 <!-- Pagination -->
 <div class="bottompagination">
@@ -41,15 +44,20 @@ title: Pictures
 
 <!-- Masonry CSS -->
 <style>
+/* Wrapper centers the masonry container */
+.pictures-wrapper {
+  text-align: center;
+}
+
+/* Masonry container needs to be inline-block for centering */
 .pictures-container {
   max-width: 1200px;
-  margin: 0 auto;       /* centers the container itself */
   padding: 20px;
-  
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* centers children horizontally */
-  gap: 20px;  /* spacing between items */
+
+  display: inline-block;  /* allow centering by wrapper */
+  text-align: left;       /* reset text alignment inside */
+  /* Removed flex and justify-content */
+  /* Removed gap */
 }
 
 .picture-inner-rectangle {
@@ -60,118 +68,115 @@ title: Pictures
   overflow: hidden;
   cursor: pointer;
   margin-bottom: 20px;
-  
-  width: calc(25% - 15px); /* keep same size */
-  /* Remove float */
-  /* float: left;  REMOVE THIS */
+
+  width: calc(25% - 15px);
+  /* Removed float */
   display: block;
 }
 
-
-  .picture-inner-rectangle:nth-child(4n) {
-    margin-right: 0;
-  }
-
-  .pictures-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  }
-
-  .pictures-image:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  }
-
-  /* Modal */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    padding-top: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .modal-content-container {
-    display: flex;
-    background-color: #fff;
-    max-width: 80%;
-    max-height: 80%;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  }
-
-  .modal-image {
-    width: 60%;
-    height: auto;
-    object-fit: contain;
-    border-radius: 6px;
-    margin-right: 20px;
-  }
-
-  .modal-description {
-    width: 40%;
-    font-size: 18px;
-    color: #333;
-    overflow-y: auto;
-  }
-
-  #modalCaption {
-    margin-top: 15px;
-    text-align: left;
-    color: #333;
-  }
-
-  .close {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-/* Responsive */
-    @media (max-width: 1000px) {
-    .picture-inner-rectangle {
-        width: calc(50% - 10px);
-        /* Remove margin-right */
-        margin-right: 0;
-    }
-    /* Remove nth-child rule since no margin-right */
-    }
-
-    @media (max-width: 600px) {
-    .picture-inner-rectangle {
-        width: 100%;
-        margin-right: 0;
-    }
-    .modal-content-container {
-        flex-direction: column;
-        max-width: 95%;
-    }
-    .modal-image {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
-    .modal-description {
-        width: 100%;
-    }
+/* Remove margin-right rules as Masonry handles spacing */
+.picture-inner-rectangle:nth-child(4n) {
+  margin-right: 0;
 }
 
+.pictures-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.pictures-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content-container {
+  display: flex;
+  background-color: #fff;
+  max-width: 80%;
+  max-height: 80%;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.modal-image {
+  width: 60%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  margin-right: 20px;
+}
+
+.modal-description {
+  width: 40%;
+  font-size: 18px;
+  color: #333;
+  overflow-y: auto;
+}
+
+#modalCaption {
+  margin-top: 15px;
+  text-align: left;
+  color: #333;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .picture-inner-rectangle {
+    width: calc(50% - 10px);
+    margin-right: 0; /* no margin needed */
+  }
+}
+
+@media (max-width: 600px) {
+  .picture-inner-rectangle {
+    width: 100%;
+    margin-right: 0;
+  }
+  .modal-content-container {
+    flex-direction: column;
+    max-width: 95%;
+  }
+  .modal-image {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .modal-description {
+    width: 100%;
+  }
+}
 </style>
+
 
 <!-- Scripts -->
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
