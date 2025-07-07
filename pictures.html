@@ -193,14 +193,14 @@ title: Pictures
     });
   });
 
-  function openModal(imageSrc, title, description) {
+  function openModal(imageSrc, title, description, author) {
     const modal = document.getElementById("photoModal");
     const modalImg = document.getElementById("modalImg");
     const caption = document.getElementById("modalCaption");
 
     modal.style.display = "flex";
     modalImg.src = imageSrc;
-    caption.innerHTML = `<strong>${title}</strong><br>${description}<br><em>Photo by: ${author}</em>`;
+    caption.innerHTML = `<strong>${title}</strong><br><br><em>Photo by: ${author}</em><br>${description}<br>`;
   }
 
   function closeModal() {
