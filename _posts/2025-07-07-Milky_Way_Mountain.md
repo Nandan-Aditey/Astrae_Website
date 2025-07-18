@@ -1,9 +1,9 @@
 ---
 #YAML part
 layout: post
-title: Andromeda
+title: Milky Way Mountain
 author: Aditey Nandan 
 description: "Sunrays through the smoke, IISc campus road"
 categories: pictures
-image: "/assets/images/Pictures/Andromeda.png"
+image: "/assets/images/Pictures/Milky_Way_Mountain.jpeg"
 ---

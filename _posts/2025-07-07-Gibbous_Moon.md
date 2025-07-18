@@ -1,9 +1,9 @@
 ---
 #YAML part
 layout: post
-title: Sunray Smoke
+title: Kalchakras
 author: Aditey Nandan 
 description: "Sunrays through the smoke, IISc campus road"
 categories: pictures
-image: "/assets/images/Pictures/Sunrays_Aditey_Nandan.jpg"
+image: "/assets/images/Pictures/Gibbous_Moon.jpeg"
 ---
