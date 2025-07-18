@@ -1,7 +1,7 @@
 ---
 #YAML part
 layout: post
-title: The Andromeda Galaxy (Messier 31 or M31)
+title: "The Andromeda Galaxy (Messier 31 or M31)"
 author: Astrae Team 
 description: > 
                 The Andromeda Galaxy (Messier 31 or M31): The so-called sister of our galaxy, the 
